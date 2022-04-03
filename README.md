@@ -1,1 +1,1 @@
-# FullstackOpen Exerciese Submission Repository of Atul Patel
+# FullstackOpen Exercieses Submission Repository of Atul Patel
