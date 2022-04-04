@@ -1,0 +1,13 @@
+.container {
+  padding-inline: 2em;
+  font-size: 18px;
+}
+
+.feedback {
+  display: flex;
+  gap: 2rem;
+}
+
+button {
+  padding: 0.4rem 1rem;
+}
