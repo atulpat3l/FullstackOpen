@@ -17,6 +17,9 @@ const App = () => {
   const handleBad = () => {
     setBad(bad + 1);
   };
+  const total = good + neutral + bad;
+  const average = (good - bad) / total;
+  const positive = total > 0 ? (good / total) * 100 : 0;
 
   return (
     <div className="container">
@@ -31,6 +34,12 @@ const App = () => {
         <p>good: {good}</p>
         <p>neutral: {neutral}</p>
         <p>bad: {bad}</p>
+      </div>
+      <hr />
+      <div className="other-data">
+        <p>total: {total}</p>
+        <p>average: {average}</p>
+        <p>positive: {positive}%</p>
       </div>
     </div>
   );
