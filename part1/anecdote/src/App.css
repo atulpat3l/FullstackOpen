@@ -5,3 +5,8 @@ button {
 .anecdote {
   height: 3rem;
 }
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
