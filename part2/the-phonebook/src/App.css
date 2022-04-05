@@ -1,0 +1,7 @@
+#root {
+  padding-inline: 2em;
+}
+
+.flow * + * {
+  margin-top: 1em;
+}
