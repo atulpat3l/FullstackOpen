@@ -3,16 +3,23 @@ import "./App.css";
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: "Arto Hellas", number: 1234567890 },
+    { name: "Arto Hellas", number: "040-123456", id: 1 },
+    { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
+    { name: "Dan Abramov", number: "12-43-234345", id: 3 },
+    { name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
   ]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
+  const [search, setSearch] = useState("");
 
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };
   const handleNumberChange = (e) => {
     setNewNumber(e.target.value);
+  };
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
   };
 
   const addName = (e) => {
@@ -30,15 +37,35 @@ const App = () => {
     }
   };
 
+  const searchResult = persons.filter((person) =>
+    person.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
+      <div className="search">
+        filter shown with:{" "}
+        <input type="text" value={search} onChange={handleSearchChange} />
+        {search !== "" ? (
+          <ul className="search-result">
+            {searchResult.map((result) => (
+              <li key={result.number}>
+                {result.name} {result.number}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          ""
+        )}
+      </div>
+      <h2>Add New</h2>
       <form className="flow" onSubmit={addName}>
         <div>
           name: <input value={newName} onChange={handleNameChange} required />
         </div>
         <div>
-          number:
+          number:{" "}
           <input value={newNumber} onChange={handleNumberChange} required />
         </div>
         <div>
