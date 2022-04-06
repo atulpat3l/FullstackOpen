@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import Filter from "./Filter";
+import PersonForm from "./PersonForm";
+import Persons from "./Persons";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -34,52 +37,24 @@ const App = () => {
     } else {
       setPersons(persons.concat(nameObject));
       setNewName("");
+      setNewNumber("");
     }
   };
-
-  const searchResult = persons.filter((person) =>
-    person.name.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <div className="search">
-        filter shown with:{" "}
-        <input type="text" value={search} onChange={handleSearchChange} />
-        {search !== "" ? (
-          <ul className="search-result">
-            {searchResult.map((result) => (
-              <li key={result.number}>
-                {result.name} {result.number}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ""
-        )}
-      </div>
-      <h2>Add New</h2>
-      <form className="flow" onSubmit={addName}>
-        <div>
-          name: <input value={newName} onChange={handleNameChange} required />
-        </div>
-        <div>
-          number:{" "}
-          <input value={newNumber} onChange={handleNumberChange} required />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Filter persons={persons} search={search} onChange={handleSearchChange} />
+
+      <PersonForm
+        addName={addName}
+        newName={newName}
+        newNumber={newNumber}
+        handleNameChange={handleNameChange}
+        handleNumberChange={handleNumberChange}
+      />
       <h2>Numbers</h2>
-      <ul className="names">
-        {persons.map((person) => (
-          <li key={person.name}>
-            {person.name} {person.number}
-          </li>
-        ))}
-      </ul>
+      <Persons persons={persons} />
     </div>
   );
 };
