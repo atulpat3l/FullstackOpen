@@ -8,7 +8,7 @@ const Filter = ({ persons, search, onChange }) => {
     <div className="search">
       filter shown with:{" "}
       <input type="text" value={search} onChange={onChange} />
-      {search !== "" ? (
+      {search !== "" && (
         <ul className="search-result">
           {searchResult.map((result) => (
             <li key={result.number}>
@@ -16,8 +16,6 @@ const Filter = ({ persons, search, onChange }) => {
             </li>
           ))}
         </ul>
-      ) : (
-        ""
       )}
     </div>
   );
