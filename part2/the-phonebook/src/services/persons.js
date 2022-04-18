@@ -12,9 +12,7 @@ const create = (newObject) => {
 };
 
 const deletePerson = (id, name) => {
-  axios
-    .delete(`${baseUrl}/${id}`)
-    .catch((err) => alert(`${name} was already deleted from server`));
+  axios.delete(`${baseUrl}/${id}`);
 };
 
 const update = (id, newNumberObject) => {

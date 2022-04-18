@@ -3,6 +3,7 @@ import "./App.css";
 import Filter from "./Filter";
 import PersonForm from "./PersonForm";
 import Person from "./Person";
+import Notification from "./Notification";
 import api from "./services/persons";
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     console.log("fetching all persons data");
@@ -55,6 +57,10 @@ const App = () => {
           );
           setNewName("");
           setNewNumber("");
+          setMessage(`Updated ${nameObject.name}`);
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
         });
       }
     } else {
@@ -62,6 +68,10 @@ const App = () => {
         setPersons(persons.concat(returnedObject));
         setNewName("");
         setNewNumber("");
+        setMessage(`Added ${nameObject.name}`);
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
       });
     }
   };
@@ -70,12 +80,17 @@ const App = () => {
     if (window.confirm(`Delete ${name}`)) {
       api.deletePerson(id, name);
       setPersons(persons.filter((person) => person.id !== id));
+      setMessage(`deleted ${name}`);
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     }
   };
 
   return (
     <div>
       <h1>Phonebook</h1>
+      <Notification message={message} />
       <Filter persons={persons} search={search} onChange={handleSearchChange} />
 
       <PersonForm
@@ -86,7 +101,7 @@ const App = () => {
         handleNumberChange={handleNumberChange}
       />
       <h2>Numbers</h2>
-      <ul className="names">
+      <ul className="flow">
         {persons.map((person) => (
           <Person
             key={person.name}
