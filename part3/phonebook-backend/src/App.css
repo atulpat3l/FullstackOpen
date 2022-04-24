@@ -1,0 +1,21 @@
+#root {
+  padding-inline: 2em;
+}
+
+.flow * + * {
+  margin-top: 1em;
+}
+
+.notification {
+  background-color: rgb(231, 231, 231);
+  color: green;
+  font-size: 1.25rem;
+  border: 3px solid green;
+  border-radius: 5px;
+  padding-inline: 2vw;
+  margin-bottom: 1em;
+}
+
+.message {
+  margin-block: .85rem;
+}
