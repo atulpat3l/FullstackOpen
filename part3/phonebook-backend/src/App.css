@@ -6,16 +6,18 @@
   margin-top: 1em;
 }
 
-.notification {
-  background-color: rgb(231, 231, 231);
-  color: green;
-  font-size: 1.25rem;
-  border: 3px solid green;
-  border-radius: 5px;
-  padding-inline: 2vw;
-  margin-bottom: 1em;
-}
 
 .message {
   margin-block: .85rem;
+  padding: 1em;
+  background-color: rgb(231, 231, 231);
+  color: green;
+  border: 3px solid green;
+  border-radius: 5px;
+}
+
+
+.error {
+  color: red;
+  border-color: red;
 }

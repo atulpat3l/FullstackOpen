@@ -1,5 +1,3 @@
-import React from "react";
-
 const Filter = ({ persons, search, onChange }) => {
   const searchResult = persons.filter((person) =>
     person.name.toLowerCase().includes(search.toLowerCase())

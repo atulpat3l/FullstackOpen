@@ -11,7 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     console.log("fetching all persons data");
@@ -57,22 +57,30 @@ const App = () => {
           );
           setNewName("");
           setNewNumber("");
-          setMessage(`Updated ${nameObject.name}`);
+          setMessage({ success: `Updated ${nameObject.name}` });
           setTimeout(() => {
             setMessage("");
           }, 3000);
         });
       }
     } else {
-      api.create(nameObject).then((returnedObject) => {
-        setPersons(persons.concat(returnedObject));
-        setNewName("");
-        setNewNumber("");
-        setMessage(`Added ${nameObject.name}`);
-        setTimeout(() => {
-          setMessage("");
-        }, 3000);
-      });
+      api
+        .create(nameObject)
+        .then((returnedObject) => {
+          setPersons(persons.concat(returnedObject));
+          setNewName("");
+          setNewNumber("");
+          setMessage({ success: `Added ${nameObject.name}` });
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
+        })
+        .catch((error) => {
+          setMessage({ error: error.response.data.error });
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
+        });
     }
   };
 
@@ -80,7 +88,7 @@ const App = () => {
     if (window.confirm(`Delete ${name}`)) {
       api.deletePerson(id, name);
       setPersons(persons.filter((person) => person.id !== id));
-      setMessage(`deleted ${name}`);
+      setMessage({ success: `deleted ${name}` });
       setTimeout(() => {
         setMessage("");
       }, 3000);

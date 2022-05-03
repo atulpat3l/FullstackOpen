@@ -11,7 +11,7 @@ const create = (newObject) => {
   return request.then((response) => response.data);
 };
 
-const deletePerson = (id, name) => {
+const deletePerson = (id) => {
   axios.delete(`${baseUrl}/${id}`);
 };
 
@@ -20,7 +20,6 @@ const update = (id, newNumberObject) => {
   return request.then((response) => response.data);
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getAll,
   create,

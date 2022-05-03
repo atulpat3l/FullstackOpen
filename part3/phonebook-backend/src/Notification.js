@@ -1,8 +1,9 @@
 const Notification = ({ message }) => {
   return (
-    message !== "" && (
+    message !== null && (
       <div className="notification">
-        <p className="message">{message}</p>
+        {message.success && <p className="message">{message.success}</p>}
+        {message.error && <p className="message error">{message.error}</p>}
       </div>
     )
   );

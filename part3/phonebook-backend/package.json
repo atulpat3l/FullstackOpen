@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "mongoose": "^6.3.1",
     "morgan": "^1.10.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -21,11 +23,14 @@
     "build:server": "node server/index.js",
     "build": "react-scripts build",
     "build:ui": "rm -rf build &&  npm run build",
-    "deploy": "git push heroku HEAD:master",
+    "deploy": "git push heroku",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix"
+
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {
@@ -47,6 +52,8 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-plugin-react": "^7.29.4",
     "nodemon": "^2.0.15"
   }
 }
