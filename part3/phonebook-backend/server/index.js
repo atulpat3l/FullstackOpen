@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.static("build"));
 
 //custom morgan token
+// eslint-disable-next-line no-unused-vars
 morgan.token("body", (req, res) => JSON.stringify(req.body));
 
 //morgan format
@@ -39,7 +40,7 @@ app.get("/api/persons", (request, response) => {
 
 app.get("/api/persons/:id", (request, response, next) => {
   const id = request.params.id;
-  const person = Person.findById(id)
+  Person.findById(id)
     .then((person) => {
       if (person) {
         response.json(person);
