@@ -1,1 +1,1 @@
-## Phonebook Fullstack - https://murmuring-bastion-61312.herokuapp.com/ [FullstackOpen phonebook fullstack app](https://murmuring-bastion-61312.herokuapp.com/)
+## Phonebook Fullstack - https://fullstack-open-phonebookapp.herokuapp.com/ [FullstackOpen phonebook fullstack app](https://fullstack-open-phonebookapp.herokuapp.com/)
