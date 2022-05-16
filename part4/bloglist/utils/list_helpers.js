@@ -42,7 +42,6 @@ const mostLikes = (blogs) => {
   const maxLikes = Math.max(...arr);
   const index = arr.indexOf(maxLikes);
   const blog = blogs[index];
-  console.log(blog);
 
   const result = {
     author: blog.author,
