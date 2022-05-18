@@ -28,6 +28,15 @@ describe("verfies blog posts data", () => {
   });
 
   test("post request creates new blog post sucessfully", async () => {
+    const loginUser = {
+      username: "root",
+      password: "sekret",
+    };
+    const loggedUser = await api
+      .post("/api/login")
+      .send(loginUser)
+      .expect("Content-Type", /application\/json/);
+
     const newBlog = {
       title: "Type wars",
       author: "Robert C. Martin",
@@ -37,6 +46,7 @@ describe("verfies blog posts data", () => {
     await api
       .post("/api/blogs")
       .send(newBlog)
+      .set("Atuhoriazation", `bearer ${loggedUser.body.token}`)
       .expect(201)
       .expect("Content-Type", /application\/json/);
     const blogsAtEnd = await helper.blogsInDB();
