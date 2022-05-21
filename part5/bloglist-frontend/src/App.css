@@ -1,0 +1,44 @@
+.App {
+  margin: 1em 1.5em;
+}
+
+.flow * + * {
+  margin-top: 1em;
+}
+
+.logout {
+  display: flex;
+  gap: 1em;
+  justify-content: start;
+  align-items: center;
+}
+
+.btn--logout {
+  padding: 0.25em 1em;
+}
+
+.btn--save,
+.btn--login {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.error {
+  color: red;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.sucess {
+  color: green;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
