@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import blogService from "../services/blogs";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import blogService from '../services/blogs';
+import PropTypes from 'prop-types';
 
 const LoginForm = ({ loginUser, handleException }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -15,22 +15,22 @@ const LoginForm = ({ loginUser, handleException }) => {
       });
       blogService.setToken(user.token);
       window.localStorage.setItem(
-        "loggedBloglistAppUser",
+        'loggedBloglistAppUser',
         JSON.stringify(user)
       );
-      setUsername("");
-      setPassword("");
+      setUsername('');
+      setPassword('');
     } catch (exception) {
-      handleException("invalid username or password");
-      setUsername("");
-      setPassword("");
+      handleException('invalid username or password');
+      setUsername('');
+      setPassword('');
     }
   };
 
   const handleChange = ({ target }) => {
-    if (target.name === "username") {
+    if (target.name === 'username') {
       setUsername(target.value);
-    } else if (target.name === "password") {
+    } else if (target.name === 'password') {
       setPassword(target.value);
     }
   };

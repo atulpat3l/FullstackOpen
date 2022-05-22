@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import blogService from "./services/blogs";
-import loginService from "./services/login";
-import "./App.css";
-import Blog from "./components/Blog";
-import LoginForm from "./components/LoginForm";
-import Notification from "./components/Notification";
-import BlogForm from "./components/BlogForm";
-import Logout from "./components/Logout";
-import Togglable from "./components/Togglable";
+import React, { useState, useEffect, useRef } from 'react';
+import blogService from './services/blogs';
+import loginService from './services/login';
+import './App.css';
+import Blog from './components/Blog';
+import LoginForm from './components/LoginForm';
+import Notification from './components/Notification';
+import BlogForm from './components/BlogForm';
+import Logout from './components/Logout';
+import Togglable from './components/Togglable';
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem("loggedBloglistAppUser");
+    const loggedUserJSON = window.localStorage.getItem('loggedBloglistAppUser');
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
       setUser(user);
@@ -49,7 +49,7 @@ const App = () => {
 
   const handleLogout = () => {
     setUser(null);
-    window.localStorage.removeItem("loggedBloglistAppUser");
+    window.localStorage.removeItem('loggedBloglistAppUser');
   };
 
   const handleSucess = (sucessMessage) => {
@@ -71,13 +71,13 @@ const App = () => {
       <h1>Blogs</h1>
       <Notification errorMessage={errorMessage} sucessMessage={sucessMessage} />
       {!user && (
-        <Togglable buttonLabel={"Log In"}>
+        <Togglable buttonLabel={'Log In'}>
           <LoginForm loginUser={loginUser} handleException={handleException} />
         </Togglable>
       )}
       {user && <Logout user={user} logout={handleLogout} />}
       {user && (
-        <Togglable buttonLabel={"New Blog"} ref={blogFormRef}>
+        <Togglable buttonLabel={'New Blog'} ref={blogFormRef}>
           <BlogForm
             createBlog={createBlog}
             handleException={handleException}

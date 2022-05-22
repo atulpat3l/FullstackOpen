@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import blogService from "../services/blogs";
+import React, { useState } from 'react';
+import blogService from '../services/blogs';
 
 const Blog = ({ blog, user, handleDelete }) => {
   const { id, title, author, url } = blog;
@@ -20,7 +20,7 @@ const Blog = ({ blog, user, handleDelete }) => {
 
   const updateLikes = async (e) => {
     e.preventDefault();
-    const updatedBlog = await blogService.update(id, newObject);
+    await blogService.update(id, newObject);
     setLikes((prev) => prev + 1);
   };
 
@@ -39,14 +39,14 @@ const Blog = ({ blog, user, handleDelete }) => {
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
-    border: "solid",
+    border: 'solid',
     borderWidth: 1,
     marginBottom: 5,
   };
   return (
     <div style={blogStyle}>
       {title} {author}
-      <button onClick={toggleView}>{view ? "Hide" : "View"}</button>
+      <button onClick={toggleView}>{view ? 'Hide' : 'View'}</button>
       {view && (
         <>
           <p>{url}</p>

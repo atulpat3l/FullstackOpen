@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Notification = ({ errorMessage, sucessMessage }) => {
-  const className = sucessMessage ? "sucess" : "error";
+  const className = sucessMessage ? 'sucess' : 'error';
   if (errorMessage === null && sucessMessage === null) {
     return null;
   }

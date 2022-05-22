@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const BlogForm = ({ createBlog, handleException, handleSuccess }) => {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [blogUrl, setBlogUrl] = useState("");
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [blogUrl, setBlogUrl] = useState('');
 
   const addBlog = async (event) => {
     event.preventDefault();
@@ -14,23 +14,23 @@ const BlogForm = ({ createBlog, handleException, handleSuccess }) => {
         url: blogUrl,
       });
       handleSuccess(`A new blog ${title} added`);
-      setTitle("");
-      setAuthor("");
-      setBlogUrl("");
+      setTitle('');
+      setAuthor('');
+      setBlogUrl('');
     } catch (exception) {
-      handleException("Fill all the fields");
-      setTitle("");
-      setAuthor("");
-      setBlogUrl("");
+      handleException('Fill all the fields');
+      setTitle('');
+      setAuthor('');
+      setBlogUrl('');
     }
   };
 
   const handleChange = ({ target }) => {
-    if (target.name === "title") {
+    if (target.name === 'title') {
       setTitle(target.value);
-    } else if (target.name === "author") {
+    } else if (target.name === 'author') {
       setAuthor(target.value);
-    } else if (target.name === "url") {
+    } else if (target.name === 'url') {
       setBlogUrl(target.value);
     }
   };
