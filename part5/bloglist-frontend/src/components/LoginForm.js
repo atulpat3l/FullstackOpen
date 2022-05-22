@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import blogService from "../services/blogs";
+import PropTypes from "prop-types";
 
 const LoginForm = ({ loginUser, handleException }) => {
   const [username, setUsername] = useState("");
@@ -56,6 +57,11 @@ const LoginForm = ({ loginUser, handleException }) => {
       </button>
     </form>
   );
+};
+
+LoginForm.propType = {
+  loginUser: PropTypes.func.isRequired,
+  handleException: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

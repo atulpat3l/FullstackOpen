@@ -43,6 +43,10 @@ const App = () => {
       .then((returnedBlog) => setBlogs(blogs.concat(returnedBlog)));
   };
 
+  const removeDeletedBlog = (id) => {
+    setBlogs(blogs.filter((blog) => blog.id !== id));
+  };
+
   const handleLogout = () => {
     setUser(null);
     window.localStorage.removeItem("loggedBloglistAppUser");
@@ -82,7 +86,12 @@ const App = () => {
         </Togglable>
       )}
       {blogs.map((blog) => (
-        <Blog key={blog.id} blog={blog} />
+        <Blog
+          key={blog.id}
+          blog={blog}
+          user={user}
+          handleDelete={removeDeletedBlog}
+        />
       ))}
     </div>
   );
