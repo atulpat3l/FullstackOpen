@@ -70,7 +70,6 @@ blogsRouter.put("/:id", async (request, response, next) => {
 
 blogsRouter.delete("/:id", async (request, response) => {
   const token = getTokenFrom(request);
-  console.log("token:", token);
   const decodedToken = jwt.verify(token, process.env.SECRET);
 
   if (!decodedToken.id) {
