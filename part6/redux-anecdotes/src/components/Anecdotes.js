@@ -1,17 +1,15 @@
 import Notification from "./Notification";
-import { vote, setAnecdotes } from "../reducers/anecdoteReducer";
+import { vote, initializeAnecdotes } from "../reducers/anecdoteReducer";
 import { useSelector, useDispatch } from "react-redux";
 import { notify, removeNotification } from "../reducers/notificationReducer";
 import Filter from "./Filter";
 import { useEffect } from "react";
-import anecdoteService from "../services/anecdotes";
+import anecdotesService from "../services/anecdotes";
 
 const Anecdotes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    anecdoteService
-      .getAll()
-      .then((anecdotes) => dispatch(setAnecdotes(anecdotes)));
+    dispatch(initializeAnecdotes());
   }, [dispatch]);
 
   let anecdotes = useSelector((state) => state.anecdotes);
@@ -20,6 +18,7 @@ const Anecdotes = () => {
   const handleVote = (id, content) => {
     dispatch(vote(id));
     dispatch(notify(`Voted: ${content}`));
+    anecdotesService.vote(id);
     setTimeout(() => {
       dispatch(removeNotification());
     }, 5000);
