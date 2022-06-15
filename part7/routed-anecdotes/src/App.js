@@ -1,28 +1,12 @@
 import { useState } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useMatch,
-  useNavigate,
-} from "react-router-dom";
-import About from "./About";
-import Anecdote from "./Anecdote";
-import AnecdoteList from "./AnecdoteList";
-import CreateNew from "./CreateNew";
-import Menu from "./Menu";
-import Notification from "./Notification";
-
-const Footer = () => (
-  <div>
-    Anecdote app for <a href="https://fullstackopen.com/">Full Stack Open</a>.
-    See{" "}
-    <a href="https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js">
-      https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js
-    </a>{" "}
-    for the source code.
-  </div>
-);
+import { Route, Routes, useMatch, useNavigate } from "react-router-dom";
+import About from "./pages/About";
+import Anecdote from "./pages/Anecdote";
+import AnecdoteList from "./pages/AnecdoteList";
+import CreateNew from "./pages/CreateNew";
+import Menu from "./components/Menu";
+import Notification from "./components/Notification";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [anecdotes, setAnecdotes] = useState([
